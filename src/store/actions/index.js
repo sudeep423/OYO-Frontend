@@ -16,5 +16,6 @@ export {
 
 export {
     searchHotel,
-    addRooms
+    addRooms,
+    book
 } from './hotel'

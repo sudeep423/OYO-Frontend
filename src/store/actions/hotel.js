@@ -77,6 +77,33 @@ export const searchHotel = (details) => {
     }
 }
 
+const bookingSuccess = (details) => {
+    return {
+        type: actionTypes.BOOKING_SUCCESS
+    }
+}
+
+
+export const book = (details) => {
+    return dispatch => {
+        console.log(details)
+        dispatch(searchStart())
+        let url = `http://localhost:8000/booking`
+        axios.post(url, details)
+            .then(response => {
+                console.log("kill")
+                console.log(response.data)
+                dispatch(bookingSuccess(response.data))
+            })
+            .catch(error => {
+                dispatch(searchFail(error.response.data.error))
+            })
+    }
+}
+
+
+
+
 
 
 

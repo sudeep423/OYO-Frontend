@@ -4,8 +4,8 @@ import classes from './Hotels.module.css'
 import Hotel from './Hotel/Hotel'
 
 const hotels = (props) => {
-    console.log(props.hotels)
     let hotels = null
+    console.log(props)
     if (props.hotels != null) {
         hotels = props.hotels.map(hotel => (
             <Hotel hotelName={props.hotels.hotelName}
@@ -17,7 +17,7 @@ const hotels = (props) => {
                 rent={hotel.rentPerRoomPerDay}
                 key={hotel.id}
                 id={hotel.id}
-                link={`?id=${hotel.id}&stayDay=0&dateIn=${props.boardingDate}`}
+                link={`?id=${hotel.id}&stayDay=${props.stayDay}&dateIn=${props.boardingDate}`}
             />
         ))
     }

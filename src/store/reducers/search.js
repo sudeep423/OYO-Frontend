@@ -15,9 +15,10 @@ const searchStart = (state, action) => {
 }
 
 const searchSuccess = (state, action) => {
+    console.log(action, "ping")
     return updateObject(state, {
         dateIn: action.dateIn,
-        stayDays: action.stayDays,
+        stayDay: action.stayDay,
         city: action.city,
         error: null,
         loading: false,

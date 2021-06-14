@@ -31,6 +31,7 @@ export const setSearchDetailStart = () => {
 
 
 export const setSearchDetailSuccess = (details) => {
+    console.log("king", details)
     return {
         type: actionTypes.SET_SEARCH_DETAILS_SUCCESS,
         ...details
@@ -54,11 +55,13 @@ export const searchHotels = (details) => {
             stayDay: details.stayDay
         }
 
+        console.log("kind")
+        console.log(details)
+        console.log("ping")
+        console.log(searchData)
         let url = `http://localhost:8000/hotels/${details.city}`
         axios.post(url, searchData)
             .then(response => {
-                console.log("kill")
-                console.log(response.data)
                 dispatch(setSearchDetailSuccess(details))
                 dispatch(searchSuccess(response.data))
             })

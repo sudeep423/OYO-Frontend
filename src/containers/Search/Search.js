@@ -105,6 +105,8 @@ class search extends Component {
             }
         };
         this.setState({ controls: updatedControls });
+
+
     }
 
     submitHandler = (event) => {
@@ -114,6 +116,7 @@ class search extends Component {
         details.dateIn = this.state.controls.boardingDate.value
         details.stayDay = this.state.controls.stayDay.value
         console.log(details)
+        console.log("kick")
         this.props.searchHotels(details)
         //this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
     }
@@ -133,7 +136,6 @@ class search extends Component {
             });
         }
 
-        console.log("help")
         let form = formElementsArray.map(formElement => (
             <Input
                 key={formElement.id}
@@ -145,6 +147,8 @@ class search extends Component {
                 touched={formElement.config.touched}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)} />
         ));
+
+        console.log('Fight', this.props.stayDay)
 
         // if (this.props.loading) {
         //     form = <Spinner />
@@ -158,7 +162,6 @@ class search extends Component {
             );
         }
 
-        console.log(this.props.hotels)
         // let authRedirect = null;
         // if (this.props.isAuthenticated) {
         //     authRedirect = <Redirect to={this.props.authRedirectPath} />

@@ -4,7 +4,6 @@ import classes from './Hotel.module.css'
 import { Link } from "react-router-dom"
 
 const hotel = (props) => {
-    console.log(props)
     return (
         <Link to={"/hotel" + props.link}>
             <div className={classes.Hotel}>

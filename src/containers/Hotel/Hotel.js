@@ -8,6 +8,7 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
+import { Redirect } from 'react-router';
 
 class hotel extends Component {
 
@@ -89,12 +90,22 @@ class hotel extends Component {
                 touched: true
             }
         };
-        console.log(updatedControls)
         this.setState({ controls: updatedControls });
         this.props.addRooms({ rent: this.props.rent, rooms: updatedControls.NoOfRooms.value })
-        console.log(this.props.rent, this.state.controls.NoOfRooms.value, this.props.CurrentRent)
     }
 
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        const details = {}
+        details.hotelId = parseInt(new URLSearchParams(this.props.location.search).get("id"))
+        details.stayDay = parseInt(new URLSearchParams(this.props.location.search).get("stayDay"))
+        details.dateIn = new URLSearchParams(this.props.location.search).get("dateIn")
+        details.userId = 3
+        details.qtyRooms = parseInt(this.state.controls.NoOfRooms.value)
+        this.props.book(details)
+        //this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
+    }
 
     render() {
         const formElementsArray = [];
@@ -104,8 +115,12 @@ class hotel extends Component {
                 config: this.state.controls[key]
             });
         }
+        console.log(this.props.booked)
+        let redirect = null
+        if (this.props.booked) {
+            redirect = <Redirect to="/search" />
+        }
 
-        console.log(this.props)
         let form = formElementsArray.map(formElement => (
             <Input
                 key={formElement.id}
@@ -131,7 +146,6 @@ class hotel extends Component {
             );
         }
         let hotel = null
-        console.log(this.props.hotel)
         if (this.props.hotel != null) {
             hotel = (<div>
                 <p>{this.props.hotel.address}</p>
@@ -147,6 +161,7 @@ class hotel extends Component {
                 <img className={classes.Image}></img>
                 <div className={classes.test}>
                     {hotel}
+                    {redirect}
                     <form onSubmit={this.submitHandler}>
                         {form}
                         <Button btnType="Success">BOOK NOW</Button> <div>Total Rent = Rs {this.props.CurrentRent}</div>
@@ -162,14 +177,16 @@ const mapStateToProps = state => {
         rooms: state.hotel.available,
         rent: state.hotel.rent,
         hotel: state.hotel.hotel,
-        CurrentRent: state.hotel.currentRent
+        CurrentRent: state.hotel.currentRent,
+        booked: state.hotel.booked
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         searchHotel: (details) => dispatch(actions.searchHotel(details)),
-        addRooms: (details) => dispatch(actions.addRooms(details))
+        addRooms: (details) => dispatch(actions.addRooms(details)),
+        book: (details) => dispatch(actions.book(details))
     }
 }
 

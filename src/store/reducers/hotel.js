@@ -9,11 +9,16 @@ const initialState = {
     rent: 0,
     error: null,
     available: 0,
-    currentRent: 0
+    currentRent: 0,
+    booked: false
 }
 
 const searchStart = (state, action) => {
     return updateObject(state, { error: null, loading: true })
+}
+
+const bookingSuccess = (state, action) => {
+    return updateObject(state, { booked: true })
 }
 
 const searchSuccess = (state, action) => {
@@ -52,6 +57,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SEARCH_HOTEL_SUCCESS: return searchSuccess(state, action)
         case actionTypes.SEARCH_HOTEL_FAIL: return searchFail(state, action)
         case actionTypes.ADD_ROOMS: return addRooms(state, action)
+        case actionTypes.BOOKING_SUCCESS: return bookingSuccess(state, action)
         default: return state
     }
 }
