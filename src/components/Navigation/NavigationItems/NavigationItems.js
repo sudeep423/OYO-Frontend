@@ -4,8 +4,8 @@ import classes from './NavigationItems.module.css'
 
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
-        <NavigationItem link="/auth/signup" exact>SIGN UP</NavigationItem>
-        <NavigationItem link="/auth/login" exact>LOGIN</NavigationItem>
+        {!props.isAuthenticated ? <NavigationItem link="/userAuth/signup" exact>SIGN UP</NavigationItem> : <NavigationItem link="/user/logout" exact>LOGOUT</NavigationItem>}
+        {!props.isAuthenticated ? <NavigationItem link="/userAuth/login" exact>LOGIN</NavigationItem> : null}
     </ul>
 )
 

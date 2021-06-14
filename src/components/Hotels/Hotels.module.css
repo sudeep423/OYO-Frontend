@@ -1,0 +1,12 @@
+.CoverHotels{
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-evenly;
+}
+
+.Cover{
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}

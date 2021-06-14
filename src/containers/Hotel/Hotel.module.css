@@ -1,0 +1,18 @@
+.Image{
+    width: 80vw;
+    min-width: 500px;
+    height: 400px;
+    background-color: black;
+}
+
+.MainCover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test{
+    width: 80vw;
+    min-width: 500px;
+    background-color: pink;
+}

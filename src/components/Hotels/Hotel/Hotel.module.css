@@ -1,0 +1,22 @@
+.Image{
+    width: 400px;
+    height: 200px;
+    margin: 3px 6px 3px 6px;
+    background-color: black;
+}
+
+.Hotel{
+    margin-bottom: 2%;
+    margin-left: 5px;
+    border: 2px solid rgb(241, 238, 238);
+}
+
+.Hotel:hover{
+    transform: scale(1.005);
+}
+.Hotel p{
+    margin-top: 0;
+    margin: 3px 6px 3px 6px;
+    margin-bottom: 2px;
+    
+}

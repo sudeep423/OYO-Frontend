@@ -8,12 +8,19 @@ import thunk from 'redux-thunk'
 
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
-import authReducer from './store/reducers/auth'
+import userAuthReducer from './store/reducers/userAuth'
+import hotelsReducer from './store/reducers/hotels'
+import searchReducer from './store/reducers/search'
+import hotel from './components/Hotels/Hotel/Hotel';
+import hotelReducer from './store/reducers/hotel'
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  userAuth: userAuthReducer,
+  hotels: hotelsReducer,
+  search: searchReducer,
+  hotel: hotelReducer
 
 })
 

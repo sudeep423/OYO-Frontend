@@ -5,7 +5,7 @@ import Pic from '../../assets/image/logo.PNG'
 
 const logo = (props) => (
     <div className={classes.Logo}>
-        <img src={Pic} alt="logo" />
+
     </div>
 )
 
